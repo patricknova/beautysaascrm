@@ -58,9 +58,10 @@ export class OrangeMoneyAPI {
         },
       );
 
+      this.accessToken = response.data.access_token;
       if (!this.accessToken) 
         {
-        throw new Error("Orange Money API returned null or empty access token");
+             throw new Error("Orange Money API returned null or empty access token");
         }
       return this.accessToken;
     } catch (error) {
@@ -188,6 +189,10 @@ export class MTNMoneyAPI {
       );
 
       this.accessToken = response.data.access_token;
+      if (!this.accessToken) 
+        {
+          throw new Error("MTN Money API returned null or empty access token");
+        }
       return this.accessToken;
     } catch (error) {
       console.error("Error getting MTN Money access token:", error);
